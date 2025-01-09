@@ -8,21 +8,18 @@ pip install --upgrade transformers
 pip install --upgrade sentence-transformers
 ```
 
----
 
 
 ### 2. 01_prepare_data.py 실행 -> combined_datasets.json 생성
 
 combined_datasets.json: 연구에 사용할 데이터셋
 
----
 
 
 ### 3. 02_context_pool.py 실행 -> full_context.json 생성
 
 full_context.json: retrieval을 수행할 context pool
 
----
 
 
 ### 4. 03_classifier_data_{model_name}.py 실행
@@ -37,7 +34,6 @@ qa_results_{n}.json 파일 생성 -> 위 모델 순서대로 n=1, 2, 3, 4
 
 > classifier를 훈련시킬 데이터셋 qa_results_{n}.json 생성
 
----
 
 
 ### 5. 04_result_counter.py 실행
@@ -48,7 +44,6 @@ file_path = qa_results_{n}.json # n 변경
 
 생성한 데이터셋의 결과 요약하는 코드
 
----
 
 
 ### 6. 05_classifier.py 실행
@@ -59,7 +54,6 @@ file_path = 'qa_results_{n}.json' # n 변경하며 각 데이터셋에 대해 �
 
 > classifier 모델 훈련
 
----
 
 
 ### 7. 06_compare.py 실행
