@@ -25,7 +25,7 @@ pip install --upgrade sentence-transformers
 
 
 
-### 2. Run **01_prepare_data.py** and create **combined_datasets.json**
+### 2. Run *01_prepare_data.py* and create **combined_datasets.json**
 
 combined_datasets.json: the full dataset used throughout this study
 
