@@ -1,6 +1,20 @@
 # Detecting Unanswerable Questions with RAG
 
-### 1. requirements.txt 요구되는 패키지 다운로드
+## Description
+
+Creating a classification model for detecting questions that are **unanswerable** for a RAG model to respond 
+
+
+## Used Data
+
+squad, hotpotqa(distractor, fullwiki)
+
+
+
+## How to get the classification model
+
+
+### 1. Download the required packages with **requirements.txt**
 
 ```
 pip install -r requirements.txt
@@ -11,62 +25,66 @@ pip install --upgrade sentence-transformers
 
 
 
-### 2. 01_prepare_data.py 실행 -> combined_datasets.json 생성
+### 2. Run **01_prepare_data.py** and create **combined_datasets.json**
 
-combined_datasets.json: 연구에 사용할 데이터셋
-
-
-
-
-### 3. 02_context_pool.py 실행 -> full_context.json 생성
-
-full_context.json: retrieval을 수행할 context pool
+combined_datasets.json: the full dataset used throughout this study
 
 
 
 
-### 4. 03_classifier_data_{model_name}.py 실행
+### 3. Run **02_context_pool.py** and create **full_context.json**
 
-```
-hf_token = 'hf_XX' # 개인 huggingface token 넣어서 실행
-```
-
-model_name: llama_3_1_8b(meta-llama/Llama-3.1-8B-Instruct), llama_2_7b(meta-llama/Llama-2-7b-chat-hf), llama_2_13b(meta-llama/Llama-2-13b-chat-hf), gemma_2_2b(google/gemma-2-2b-it)
-
-qa_results_{n}.json 파일 생성 -> 위 모델 순서대로 n=1, 2, 3, 4
-
-> classifier를 훈련시킬 데이터셋 qa_results_{n}.json 생성
+full_context.json: the context pool used for retrieval
 
 
 
 
-### 5. 04_result_counter.py 실행
+### 4. Run **03_classifier_data_{model_name}.py** and create **qa_results_{n}.json**
 
 ```
-file_path = qa_results_{n}.json # n 변경
+hf_token = 'hf_XX' # insert your personal Hugging Face token and run
 ```
 
-생성한 데이터셋의 결과 요약하는 코드
+{model_name} input
+- llama_3_1_8b(meta-llama/Llama-3.1-8B-Instruct)
+- llama_2_7b(meta-llama/Llama-2-7b-chat-hf)
+- llama_2_13b(meta-llama/Llama-2-13b-chat-hf)
+- gemma_2_2b(google/gemma-2-2b-it)
+
+set n = 1, 2, 3, 4 in the same order as the models listed above
+
+qa_results_{n}.json: a final dataset used to train the classifier model
 
 
 
 
-### 6. 05_classifier.py 실행
-
-```
-file_path = 'qa_results_{n}.json' # n 변경하며 각 데이터셋에 대해 훈련 진행
-```
-
-> classifier 모델 훈련
-
-
-
-
-### 7. 06_compare.py 실행
+### 5. Run **04_result_counter.py**
 
 ```
-file_path_1 = 'qa_results_{n}.json' # n 변경
-file_path_2 = 'qa_results_{m}.json' # m 변경
+file_path = qa_results_{n}.json # change n by 1, 2, 3, or 4
 ```
 
-> 두 모델의 retrieval 횟수 결과에 어떤 차이가 있는지를 확인하기 위한 코드
+> code summarizing the final dataset created
+
+
+
+
+### 6. Run **05_classifier.py**
+
+```
+file_path = 'qa_results_{n}.json' # change n to train on each dataset
+```
+
+> code training a classifier model
+
+
+
+
+### 7. Run **06_compare.py**
+
+```
+file_path_1 = 'qa_results_{n}.json' # change n
+file_path_2 = 'qa_results_{m}.json' # change m
+```
+
+> code to compare the retrieval counts between the two models for improved interpretability 
