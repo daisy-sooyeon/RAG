@@ -51,9 +51,7 @@ hf_token = 'hf_XX' # insert your personal Hugging Face token and run
 - llama_2_13b(meta-llama/Llama-2-13b-chat-hf)
 - gemma_2_2b(google/gemma-2-2b-it)
 
-set n = 1, 2, 3, 4 in the same order as the models listed above
-
-qa_results_{n}.json: a final dataset used to train the classifier model
+qa_results_{n}.json: a final dataset used to train the classifier model -> set n = 1, 2, 3, 4 in the same order as the models listed above
 
 
 
