@@ -14,7 +14,7 @@ squad, hotpotqa(distractor, fullwiki)
 ## How to get the classification model
 
 
-### 1. Download the required packages with **requirements.txt**
+### 1. Download the required packages with *requirements.txt*
 
 ```
 pip install -r requirements.txt
@@ -25,21 +25,21 @@ pip install --upgrade sentence-transformers
 
 
 
-### 2. Run *01_prepare_data.py* and create **combined_datasets.json**
+### 2. Run *01_prepare_data.py* and create *combined_datasets.json*
 
 combined_datasets.json: the full dataset used throughout this study
 
 
 
 
-### 3. Run **02_context_pool.py** and create **full_context.json**
+### 3. Run *02_context_pool.py* and create *full_context.json*
 
 full_context.json: the context pool used for retrieval
 
 
 
 
-### 4. Run **03_classifier_data_{model_name}.py** and create **qa_results_{n}.json**
+### 4. Run *03_classifier_data_{model_name}.py* and create *qa_results_{n}.json*
 
 ```
 hf_token = 'hf_XX' # insert your personal Hugging Face token and run
@@ -58,7 +58,7 @@ qa_results_{n}.json: a final dataset used to train the classifier model
 
 
 
-### 5. Run **04_result_counter.py**
+### 5. Run *04_result_counter.py*
 
 ```
 file_path = qa_results_{n}.json # change n by 1, 2, 3, or 4
@@ -69,7 +69,7 @@ file_path = qa_results_{n}.json # change n by 1, 2, 3, or 4
 
 
 
-### 6. Run **05_classifier.py**
+### 6. Run *05_classifier.py*
 
 ```
 file_path = 'qa_results_{n}.json' # change n to train on each dataset
@@ -80,7 +80,7 @@ file_path = 'qa_results_{n}.json' # change n to train on each dataset
 
 
 
-### 7. Run **06_compare.py**
+### 7. Run *06_compare.py*
 
 ```
 file_path_1 = 'qa_results_{n}.json' # change n
